@@ -1,0 +1,30 @@
+# Archivos generados por Unity que no se deben subir
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# Archivos de usuario y configuraciones locales
+UserSettings/
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.unityproj
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.psess
+*.pdb
+*.db
+
+# Archivos de sistema (Windows / Mac)
+.DS_Store
+Thumbs.db
+
+# Si usas JetBrains Rider
+*.iml
