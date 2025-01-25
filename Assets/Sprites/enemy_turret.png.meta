@@ -123,6 +123,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -359,7 +372,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      enemy_turret_0: 3841343869082413894
+      enemy_turret_1: 1612080176579120665
+      enemy_turret_2: 1756650230204952309
+      enemy_turret_3: 6422306940094465479
+      enemy_turret_4: 8434960657078696977
+      enemy_turret_5: -7367557988940173070
+      enemy_turret_6: 2040231745630410605
+      enemy_turret_7: 308778084324977904
+      enemy_turret_8: 4720740719591471564
+      enemy_turret_9: 9163107010887948834
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
