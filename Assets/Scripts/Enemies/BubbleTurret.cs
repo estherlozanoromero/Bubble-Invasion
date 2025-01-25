@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class EnemyShooter : MonoBehaviour
+public class BubbleTurret : MonoBehaviour
 {
-    public GameObject bubblePrefab;
-    public Transform firePoint;
-    public float fireRate = 2f;
-    public float bubbleSpeed = 5f;
-    private float nextFireTime;
+    public GameObject bubblePrefab; // Prefab de la burbuja gigante
+    public Transform firePoint; // Lugar desde donde se disparan las burbujas
+    public float fireRate = 3f; // Tiempo entre disparos
+
+    private float nextFireTime = 0f;
 
     private void Update()
     {
@@ -21,6 +21,6 @@ public class EnemyShooter : MonoBehaviour
     {
         GameObject bubble = Instantiate(bubblePrefab, firePoint.position, Quaternion.identity);
         Rigidbody2D rb = bubble.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = Vector2.left * bubbleSpeed; // Dispara a la izquierda
+        rb.linearVelocity = Vector2.up * 2f; // Hace que la burbuja suba lentamente
     }
 }
