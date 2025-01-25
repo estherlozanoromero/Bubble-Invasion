@@ -17,6 +17,8 @@ public class EnemyCapturer : MonoBehaviour
 
     void Patrol()
     {
+        if (patrolPoints.Length == 0) return;
+
         transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPoint].position, speed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, patrolPoints[currentPoint].position) < 0.2f)

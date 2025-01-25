@@ -14,7 +14,7 @@ public class Bubble : MonoBehaviour
     {
         trappedCharacter = character;
         character.transform.SetParent(transform);
-        character.GetComponent<Rigidbody2D>().isKinematic = true;
+        character.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
     }
 
     public void BreakBubble()
@@ -22,7 +22,7 @@ public class Bubble : MonoBehaviour
         if (trappedCharacter)
         {
             trappedCharacter.transform.SetParent(null);
-            trappedCharacter.GetComponent<Rigidbody2D>().isKinematic = false;
+            trappedCharacter.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
         Destroy(gameObject);
     }
