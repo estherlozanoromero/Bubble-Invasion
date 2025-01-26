@@ -50,6 +50,7 @@ MonoBehaviour:
   speed: 10
   lifetime: 5
   isFacingRight: 0
+  isLookingUp: 0
 --- !u!212 &1562374263705429424
 SpriteRenderer:
   m_ObjectHideFlags: 0
