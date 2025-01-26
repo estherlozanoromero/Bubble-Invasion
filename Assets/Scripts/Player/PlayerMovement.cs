@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f; // Velocidad de movimiento horizontal
@@ -7,11 +8,15 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private PhysicsMaterial2D noFrictionMaterial; // Material sin fricción
     public bool isFacingRight = true; // Dirección del personaje (true = derecha, false = izquierda)
+    private Animator animator; // Referencia al Animator
 
     void Start()
     {
         // Obtener el Rigidbody2D del personaje
         rb = GetComponent<Rigidbody2D>();
+
+        // Obtener el componente Animator
+        animator = GetComponent<Animator>();
 
         // Crear un PhysicsMaterial2D para evitar fricción lateral
         noFrictionMaterial = new PhysicsMaterial2D { friction = 0f, bounciness = 0f };
@@ -35,10 +40,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Salto
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
+
+        // Controlar animaciones
+        animator.SetBool("isRunning", moveInput != 0); // True si hay movimiento
+        animator.SetBool("crouch", Input.GetKey(KeyCode.S)); // True si se mantiene pulsada 'S'
+        animator.SetBool("look-up", Input.GetKey(KeyCode.W)); // True si se mantiene pulsada 'W'
     }
 
     private void Flip()
