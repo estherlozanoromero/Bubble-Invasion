@@ -44,7 +44,7 @@ public class BubbleTurret : MonoBehaviour
     void ShootBubble(Transform target)
     {
         GameObject bubble = Instantiate(bubblePrefab, firePoint.position, Quaternion.identity);
-        bubble.GetComponent<GiantBubble>().SetTarget(target);
+        bubble.GetComponent<GiantBubble>().SetTarget(target); // La burbuja se mueve al ciudadano
     }
 
     public void TakeDamage()
@@ -52,8 +52,7 @@ public class BubbleTurret : MonoBehaviour
         if (!isDead)
         {
             isDead = true;
-            animator.SetTrigger("Death");
-            Destroy(gameObject, 1f); // Se destruye después de la animación
+            animator.SetBool("Death", isDead);
         }
     }
 }

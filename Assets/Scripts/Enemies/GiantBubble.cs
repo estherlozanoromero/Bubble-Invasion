@@ -37,7 +37,7 @@ public class GiantBubble : MonoBehaviour
     {
         trappedCitizen = citizen;
         trappedCitizen.GetComponent<Citizen>().GetTrapped(transform);
-        animator.SetTrigger("Trapped");
+        animator.SetTrigger("Trapped"); // Activa animación de atrapado
     }
 
     public void BreakBubble()
@@ -46,7 +46,7 @@ public class GiantBubble : MonoBehaviour
         {
             trappedCitizen.GetComponent<Citizen>().GetReleased();
         }
-        animator.SetTrigger("Destroyed");
+        animator.SetTrigger("Destroyed"); // Activa animación de destrucción
         Destroy(gameObject, 0.5f);
     }
 }

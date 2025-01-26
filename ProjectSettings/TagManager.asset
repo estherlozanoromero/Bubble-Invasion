@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - Citizen
   - BubbleTurret
+  - BubbleShooter
   layers:
   - Default
   - TransparentFX

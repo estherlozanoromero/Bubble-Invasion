@@ -44,38 +44,27 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) // Ahora usamos colisiones físicas
     {
-        // Destruir la bala al colisionar con cualquier objeto
-        Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Si golpea una burbuja gigante, la destruye
-        if (collision.CompareTag("GiantBubble"))
+        if (collision.gameObject.CompareTag("GiantBubble"))
         {
-            collision.GetComponent<GiantBubble>().BreakBubble(); // Rompe la burbuja y libera al ciudadano
-            Destroy(gameObject); // La bala se destruye tras el impacto
+            collision.gameObject.GetComponent<GiantBubble>()?.BreakBubble(); // Rompe la burbuja
+        }
+        else if (collision.gameObject.CompareTag("BubbleTurret"))
+        {
+            collision.gameObject.GetComponent<BubbleTurret>()?.TakeDamage(); // Destruye la torreta
+        }
+        else if (collision.gameObject.CompareTag("BubbleShooter"))
+        {
+            collision.gameObject.GetComponent<BubbleShooter>()?.TakeDamage(); // Destruye el enemigo que dispara burbujas
+        }
+        else if (collision.gameObject.CompareTag("Wall"))
+        {
+            // Si choca contra una pared, simplemente se destruye
         }
 
-        // Si golpea un proyectil enemigo, lo destruye
-        else if (collision.CompareTag("BubbleTurret"))
-        {
-            Destroy(collision.gameObject); // Destruye la torre enemiga
-            Destroy(gameObject); // La bala del jugador también desaparece
-        }
-
-        // Si golpea una pared, la bala desaparece
-        else if (collision.CompareTag("Wall"))
-        {
-            Destroy(gameObject);
-        }
-
-        if (collision.CompareTag("BubbleShooter")) // Si golpea al BubbleShooter
-        {
-            collision.GetComponent<BubbleShooter>().TakeDamage(); // Mata al enemigo
-            Destroy(gameObject); // La bala desaparece tras el impacto
-        }
+        Destroy(gameObject); // La bala se destruye tras el impacto
     }
 }
+
+
