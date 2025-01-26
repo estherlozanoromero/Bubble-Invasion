@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4656604556979193226}
   m_Layer: 0
   m_Name: GiantBubble
-  m_TagString: Untagged
+  m_TagString: GiantBubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83d13f51f72ecb488a899559f652eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  riseSpeed: 1
+  moveSpeed: 2
 --- !u!95 &4656604556979193226
 Animator:
   serializedVersion: 7

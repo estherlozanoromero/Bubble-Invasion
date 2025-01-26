@@ -127,6 +127,10 @@ MonoBehaviour:
   bubblePrefab: {fileID: 2365406937615395447, guid: acf6c1cb17761bb4cb70adbcb3526328, type: 3}
   firePoint: {fileID: 2338890232207753200}
   fireRate: 3
+  detectionRange: 5
+  citizenLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &6407160448787642962
 Animator:
   serializedVersion: 7

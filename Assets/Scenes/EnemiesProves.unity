@@ -382,10 +382,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GiantBubble
       objectReference: {fileID: 0}
-    - target: {fileID: 2365406937615395447, guid: acf6c1cb17761bb4cb70adbcb3526328, type: 3}
-      propertyPath: m_TagString
-      value: GiantBubble
-      objectReference: {fileID: 0}
     - target: {fileID: 3217023947605537466, guid: acf6c1cb17761bb4cb70adbcb3526328, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.07
@@ -538,10 +534,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1457943358503604522, guid: 768d194da24e5684081ad9ec8fb227b7, type: 3}
       propertyPath: m_Name
-      value: BubbleProjectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457943358503604522, guid: 768d194da24e5684081ad9ec8fb227b7, type: 3}
-      propertyPath: m_TagString
       value: BubbleProjectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
