@@ -9,6 +9,7 @@ TagManager:
   - BubbleProjectile
   - Wall
   - Citizen
+  - BubbleTurret
   layers:
   - Default
   - TransparentFX
