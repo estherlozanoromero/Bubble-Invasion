@@ -2,12 +2,27 @@ using UnityEngine;
 
 public class GiantBubble : MonoBehaviour
 {
-    public float riseSpeed = 1f;
+    public float moveSpeed = 2f;
     private GameObject trappedCitizen;
+    private Transform targetCitizen;
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
-        transform.position += Vector3.up * riseSpeed * Time.deltaTime;
+        if (targetCitizen)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetCitizen.position, moveSpeed * Time.deltaTime);
+        }
+    }
+
+    public void SetTarget(Transform citizen)
+    {
+        targetCitizen = citizen;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,17 +36,17 @@ public class GiantBubble : MonoBehaviour
     void CaptureCitizen(GameObject citizen)
     {
         trappedCitizen = citizen;
-        trappedCitizen.transform.SetParent(transform);
-        trappedCitizen.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        trappedCitizen.GetComponent<Citizen>().GetTrapped(transform);
+        animator.SetTrigger("Trapped");
     }
 
-    public void BreakBubble() // Si el jugador dispara, se libera al ciudadano
+    public void BreakBubble()
     {
         if (trappedCitizen)
         {
-            trappedCitizen.transform.SetParent(null);
-            trappedCitizen.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            trappedCitizen.GetComponent<Citizen>().GetReleased();
         }
-        Destroy(gameObject);
+        animator.SetTrigger("Destroyed");
+        Destroy(gameObject, 0.5f);
     }
 }

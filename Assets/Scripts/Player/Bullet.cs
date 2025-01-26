@@ -42,4 +42,33 @@ public class Bullet : MonoBehaviour
         // Destruir la bala al colisionar con cualquier objeto
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Si golpea una burbuja gigante, la destruye
+        if (collision.CompareTag("GiantBubble"))
+        {
+            collision.GetComponent<GiantBubble>().BreakBubble(); // Rompe la burbuja y libera al ciudadano
+            Destroy(gameObject); // La bala se destruye tras el impacto
+        }
+
+        // Si golpea un proyectil enemigo, lo destruye
+        else if (collision.CompareTag("BubbleProjectile"))
+        {
+            Destroy(collision.gameObject); // Destruye el proyectil enemigo
+            Destroy(gameObject); // La bala del jugador también desaparece
+        }
+
+        // Si golpea una pared, la bala desaparece
+        else if (collision.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("BubbleShooter")) // Si golpea al BubbleShooter
+        {
+            collision.GetComponent<BubbleShooter>().TakeDamage(); // Mata al enemigo
+            Destroy(gameObject); // La bala desaparece tras el impacto
+        }
+    }
 }

@@ -5,18 +5,19 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
-  serializedVersion: 3
-  tags: []
+  - GiantBubble
+  - BubbleProjectile
+  - Wall
+  - Citizen
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
   - Player
-  - Characters
   - Water
   - UI
+  - UI
   - Ground
-  - 
   - 
   - 
   - 

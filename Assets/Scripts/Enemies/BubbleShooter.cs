@@ -10,10 +10,20 @@ public class BubbleShooter : MonoBehaviour
 
     private float nextFireTime = 0f;
     private Transform player;
+    private Animator animator;
+    private bool isDead = false;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
-        DetectPlayerAndShoot();
+        if (!isDead)
+        {
+            DetectPlayerAndShoot();
+        }
     }
 
     void DetectPlayerAndShoot()
@@ -23,6 +33,8 @@ public class BubbleShooter : MonoBehaviour
         if (detectedPlayer)
         {
             player = detectedPlayer.transform;
+            animator.SetTrigger("Attack"); // Activa la animaci�n de disparo
+
             if (Time.time >= nextFireTime)
             {
                 ShootBubble();
@@ -37,5 +49,15 @@ public class BubbleShooter : MonoBehaviour
         Rigidbody2D rb = bubble.GetComponent<Rigidbody2D>();
         Vector2 direction = (player.position - firePoint.position).normalized;
         rb.linearVelocity = direction * 5f;
+    }
+
+    public void TakeDamage()
+    {
+        if (!isDead)
+        {
+            isDead = true;
+            animator.SetTrigger("Death"); // Activa la animaci�n de muerte
+            Destroy(gameObject, 1f); // Destruye al enemigo tras la animaci�n
+        }
     }
 }

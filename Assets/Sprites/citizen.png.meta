@@ -100,7 +100,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -114,7 +114,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -138,7 +138,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -672,7 +672,29 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Civillian1_0: 7586918916986883591
+      Civillian1_1: 2150264738318896143
+      Civillian1_10: -1391115117082833770
+      Civillian1_11: -5117663824440934360
+      Civillian1_12: 8944396862801703824
+      Civillian1_13: -3045115474356896770
+      Civillian1_14: 2404664185281369670
+      Civillian1_15: -1416791920231400522
+      Civillian1_16: 4281886550558357861
+      Civillian1_17: -7711967106771978618
+      Civillian1_18: 6505602334878089456
+      Civillian1_19: -2254506930455745670
+      Civillian1_2: 3561717001614962161
+      Civillian1_20: 3246900024534197795
+      Civillian1_21: -8866289522089385059
+      Civillian1_3: 4901099097758188703
+      Civillian1_4: -6000536303394829655
+      Civillian1_5: 4200883474410452787
+      Civillian1_6: -9068082955979729878
+      Civillian1_7: 1318867245829568178
+      Civillian1_8: 4966864054223798555
+      Civillian1_9: 8978997041480093291
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
