@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private PhysicsMaterial2D noFrictionMaterial; // Material sin fricción
     public bool isFacingRight = true; // Dirección del personaje (true = derecha, false = izquierda)
     private Animator animator; // Referencia al Animator
+    public GameObject projectilePrefab; // Prefab del proyectil
+    public Transform firePoint; // Punto de disparo
 
     void Start()
     {
@@ -25,9 +27,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Movimiento horizontal
+        // Movimiento horizontal y bloqueo cuando se presionan W o S
         float moveInput = Input.GetAxisRaw("Horizontal"); // -1 (izquierda), 1 (derecha), 0 (ninguno)
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+        {
+            rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Bloquea el movimiento horizontal
+        }
 
         // Cambiar dirección del personaje
         if (moveInput > 0 && !isFacingRight)
@@ -39,16 +48,43 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        // Salto
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        // Salto y bloqueo cuando se presionan W o S
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
         // Controlar animaciones
-        animator.SetBool("isRunning", moveInput != 0); // True si hay movimiento
+        animator.SetBool("isRunning", moveInput != 0 && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)); // True si hay movimiento
         animator.SetBool("crouch", Input.GetKey(KeyCode.S)); // True si se mantiene pulsada 'S'
         animator.SetBool("look-up", Input.GetKey(KeyCode.W)); // True si se mantiene pulsada 'W'
+
+        // Disparo
+        if (Input.GetKeyDown(KeyCode.F)) // Disparo con tecla 'F'
+        {
+            Shoot();
+        }
+    }
+
+    private void Shoot()
+    {
+        // Determinar la dirección del disparo
+        Vector2 shootDirection;
+        if (Input.GetKey(KeyCode.W))
+        {
+            shootDirection = Vector2.up; // Disparo hacia arriba
+        }
+        else
+        {
+            shootDirection = isFacingRight ? Vector2.right : Vector2.left; // Disparo lateral
+        }
+
+        // Crear el proyectil
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+
+        // Asignar velocidad al proyectil
+        Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
+        projectileRb.linearVelocity = shootDirection * 10f; // Ajusta la velocidad del proyectil
     }
 
     private void Flip()

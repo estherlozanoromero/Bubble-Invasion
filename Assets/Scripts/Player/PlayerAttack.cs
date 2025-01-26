@@ -28,11 +28,23 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        // Determinar la posición del ataque basado en la dirección del personaje
-        Vector3 attackPoint = playerTransform.position +
-            (playerMovement.isFacingRight ? Vector3.right : Vector3.left) * attackRange;
+        // Determinar offsets según la animación activa
+        Vector3 offset = Vector3.zero;
+        if (animator.GetBool("crouch"))
+        {
+            offset = new Vector3(playerMovement.isFacingRight ? attackRange : -attackRange, 0.33f, 0f); // Offset actual
+        }
+        else if (animator.GetBool("look-up"))
+        {
+            offset = new Vector3(playerMovement.isFacingRight ? 0f : 0f, 2.5f, 0f); // Offset para look-up
+        }
+        else
+        {
+            offset = new Vector3(playerMovement.isFacingRight ? attackRange : -attackRange, 1.15f, 0f); // Offset para ataque normal
+        }
 
-        attackPoint.y += 0.33f;
+        // Calcular la posición del ataque
+        Vector3 attackPoint = playerTransform.position + offset;
 
         // Generar la bala en la posición calculada
         if (attackPrefab != null)
@@ -43,7 +55,7 @@ public class PlayerAttack : MonoBehaviour
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             if (bulletScript != null)
             {
-                bulletScript.Initialize(playerMovement.isFacingRight);
+                bulletScript.Initialize(playerMovement.isFacingRight, animator.GetBool("look-up"));
             }
         }
 
