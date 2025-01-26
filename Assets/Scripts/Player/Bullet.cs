@@ -53,9 +53,9 @@ public class Bullet : MonoBehaviour
         }
 
         // Si golpea un proyectil enemigo, lo destruye
-        else if (collision.CompareTag("BubbleProjectile"))
+        else if (collision.CompareTag("BubbleTurret"))
         {
-            Destroy(collision.gameObject); // Destruye el proyectil enemigo
+            Destroy(collision.gameObject); // Destruye la torre enemiga
             Destroy(gameObject); // La bala del jugador también desaparece
         }
 
