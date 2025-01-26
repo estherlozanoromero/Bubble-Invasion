@@ -3,15 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
+  tags:
+  - Ground
+  serializedVersion: 3
   tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
+  - Player
   - Characters
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
